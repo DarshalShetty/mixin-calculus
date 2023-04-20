@@ -31,7 +31,7 @@
 
 (: eval-prog (-> program value))
 (define (eval-prog p)
-  (match-define (program classes main) p)
+  (match-define (program mixins classes main) p)
   (eval-term classes empty-env main))
 
 (provide (all-defined-out))

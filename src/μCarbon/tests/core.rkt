@@ -178,6 +178,20 @@
         (∘ (new Pair ((new A ())
                       (new B ())))
            setfst
-           ((new A ()))))))))
+           ((new A ()))))))
+   (test-case
+       "Non-existent field type"
+     (check-program-type-error
+      '(program
+        ((class A ())
+         (class B ())
+         (class Pair ((var fst : A)
+                      (var snd : C)
+                      (fn setfst ((newfst : A)) -> Pair
+                          (new Pair (newfst (∘ self snd)))))))
+        (∘ (new Pair ((new A ())
+                      (new C ())))
+           setfst
+           ((new A ()) (new B ()))))))))
 
 (provide core-tests)

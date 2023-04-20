@@ -16,10 +16,10 @@
 (define (lookup-CT ct c)
   (match ct
     [`() (error 'lookup-CT "Class not found: ~a" c)]
-    [`(,(and cdecl (decl/class n _ _)) . ,rest-ct)
+    [`(,(and cdecl (decl/class n _ _ _)) . ,rest-ct)
      #:when (eqv? n c)
      cdecl]
-    [`(,(and cdecl (decl/class n _ _)) . ,rest-ct)
+    [`(,(and cdecl (decl/class n _ _ _)) . ,rest-ct)
      (lookup-CT rest-ct c)]))
 
 

@@ -64,7 +64,7 @@
 
 (: ⊢-class (-> ClassTable decl/class Void))
 (define (⊢-class ct c-decl)
-  (match-define (decl/class name fields methods) c-decl)
+  (match-define (decl/class name fields methods mixes) c-decl)
   (check-dup-name fields decl/var-name
                   (format "Duplicate field name in class ~a." name))
   (check-dup-name methods decl/method-name
@@ -74,7 +74,7 @@
 
 (: ⊢-program (-> program Symbol))
 (define (⊢-program p)
-  (match-define (program ct main) p)
+  (match-define (program mt ct main) p)
   (check-dup-name ct decl/class-name "Duplicate class name.")
   (for ([c-decl : decl/class ct])
     ;; classes can recursively mention classes in their body

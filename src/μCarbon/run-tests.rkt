@@ -4,8 +4,10 @@
 (require typed/rackunit)
 
 (require "tests/core.rkt")
+(require "tests/mixin.rkt")
 
 (run-tests
  (test-suite
   "Test programs for μCarbon"
-  core-tests))
+  core-tests
+  mixin-tests))
